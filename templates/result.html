@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Medical Report</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f6f9;
+            text-align: center;
+            margin: 0;
+        }
+
+        .report {
+            margin: 40px auto;
+            padding: 30px;
+            width: 750px;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0px 0px 20px rgba(0,0,0,0.08);
+            text-align: left;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .header h2 {
+            margin: 0;
+            color: #333;
+        }
+
+        .patient-info {
+            margin-bottom: 20px;
+            padding: 15px;
+            background: #f8f9fc;
+            border-radius: 8px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 10px;
+        }
+
+        th {
+            background-color: #4e73df;
+            color: white;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        .diagnosis {
+            font-size: 18px;
+            font-weight: bold;
+            margin-top: 20px;
+        }
+
+        .safe {
+            color: green;
+        }
+
+        .risk {
+            color: red;
+        }
+
+        .buttons {
+            margin-top: 25px;
+            text-align: center;
+        }
+
+        button, a {
+            padding: 10px 20px;
+            margin: 5px;
+            text-decoration: none;
+            border: none;
+            background: #4e73df;
+            color: white;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+
+        a {
+            display: inline-block;
+        }
+
+        @media print {
+            .buttons {
+                display: none;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="report">
+
+    <div class="header">
+        <h2>Heart Disease Medical Report</h2>
+        <p><strong>Report Generated:</strong> {{ date }}</p>
+    </div>
+
+    <div class="patient-info">
+        <p><strong>Patient Name:</strong> {{ patient_name }}</p>
+        <p><strong>Phone Number:</strong> {{ phone }}</p>
+    </div>
+
+    <h3>Medical Parameters</h3>
+
+    <table>
+        <tr>
+            <th>Parameter</th>
+            <th>Value</th>
+        </tr>
+        <tr><td>Age</td><td>{{ form_data.age }}</td></tr>
+        <tr><td>Sex</td><td>{{ form_data.sex }}</td></tr>
+        <tr><td>Chest Pain Type</td><td>{{ form_data.cp }}</td></tr>
+        <tr><td>Resting Blood Pressure</td><td>{{ form_data.trestbps }}</td></tr>
+        <tr><td>Cholesterol</td><td>{{ form_data.chol }}</td></tr>
+        <tr><td>Fasting Blood Sugar</td><td>{{ form_data.fbs }}</td></tr>
+        <tr><td>Rest ECG</td><td>{{ form_data.restecg }}</td></tr>
+        <tr><td>Max Heart Rate</td><td>{{ form_data.thalach }}</td></tr>
+        <tr><td>Exercise Induced Angina</td><td>{{ form_data.exang }}</td></tr>
+        <tr><td>ST Depression</td><td>{{ form_data.oldpeak }}</td></tr>
+        <tr><td>Slope</td><td>{{ form_data.slope }}</td></tr>
+        <tr><td>Major Vessels</td><td>{{ form_data.ca }}</td></tr>
+        <tr><td>Thal</td><td>{{ form_data.thal }}</td></tr>
+    </table>
+
+    <div class="diagnosis 
+        {% if 'No Heart Disease' in prediction_text %}safe{% else %}risk{% endif %}">
+        Diagnosis: {{ prediction_text }}
+    </div>
+
+    <p><strong>Risk Probability:</strong> {{ probability }}%</p>
+
+    <div class="buttons">
+        <button onclick="window.print()">Print Report</button>
+        <a href="/home">New Prediction</a>
+    </div>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Heart Disease Prediction</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1>Heart Disease Prediction System</h1>
+
+    <form action="/predict" method="POST">
+        <input type="number" name="age" placeholder="Age" required><br>
+        <input type="number" name="sex" placeholder="Sex (0/1)" required><br>
+        <input type="number" name="cp" placeholder="Chest Pain Type" required><br>
+        <input type="number" name="trestbps" placeholder="Resting BP" required><br>
+        <input type="number" name="chol" placeholder="Cholesterol" required><br>
+        <input type="number" name="fbs" placeholder="Fasting Blood Sugar" required><br>
+        <input type="number" name="restecg" placeholder="Rest ECG" required><br>
+        <input type="number" name="thalach" placeholder="Max Heart Rate" required><br>
+        <input type="number" name="exang" placeholder="Exercise Angina" required><br>
+        <input type="number" step="any" name="oldpeak" placeholder="ST Depression" required><br>
+        <input type="number" name="slope" placeholder="Slope" required><br>
+        <input type="number" name="ca" placeholder="Major Vessels" required><br>
+        <input type="number" name="thal" placeholder="Thal" required><br><br>
+
+        <button type="submit">Predict</button>
+    </form>
+</body>
+</html>
