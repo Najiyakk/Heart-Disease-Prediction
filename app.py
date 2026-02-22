@@ -68,7 +68,6 @@ def predict():
         patient_name=session.get('patient_name'),
         phone=session.get('phone')
     )
-
 import os
 
 if __name__ == "__main__":
